@@ -17,6 +17,9 @@ Common system configuration:
 
 ### auto_ssh.sh
 
-* desc: auto login from ssh
+* desc: auto login by configure
+* depend: expect_login.sh
 
+### expect_login.sh
+* desc: auto ssh login by expect
 
