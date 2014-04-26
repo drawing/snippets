@@ -5,13 +5,18 @@ Common system configuration:
 
 ---
 
-## tmux.conf
+### tmux.conf
 
 * desc: tmux configure
 * location: ~/.tmux.conf
 
-## vim.conf
+### vim.conf
 
 * desc: vim configure
 * location: ~/.vimrc
+
+### auto_ssh.sh
+
+* desc: auto login from ssh
+
 
