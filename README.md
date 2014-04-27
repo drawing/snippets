@@ -7,4 +7,5 @@ snippets
 * config: 常用系统配置文件
 * asm: 汇编语言练习
 * openapi: 不同平台openapi接口调用练习
+* tools: 日常为了节省人力实现的一些零散工具
 

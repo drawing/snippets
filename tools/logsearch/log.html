@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+
+<table  border="1">
+{{range .TraceLogs}}
+<tr>
+	<td>{{.}}</td>
+</tr>
+{{end}}
+</table>
+<hr>
+<h2>{{.IP}}</h2>
+<p>
+<pre>{{.Status}}</pre>
+</p>
+<hr>
+<table  border="1">
+{{range .SendMsg}}
+<tr>
+	<td>{{.}}</td>
+</tr>
+{{end}}
+</table>
+
+<body>
+</body>
+</html>
