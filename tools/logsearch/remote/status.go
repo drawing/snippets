@@ -8,9 +8,8 @@ import (
 )
 
 var PushSvcSet0 []string = []string{
-	"10.130.10.228",
-	"10.130.92.11",
-	"10.134.10.98",
+	"10.153.156.221",
+	"10.198.140.225",
 	"10.204.18.227",
 	"10.204.18.228",
 	"10.135.35.82",
@@ -36,9 +35,9 @@ var PushSvcSet1 []string = []string{
 var PushSvcSet2 []string = []string{
 	"10.204.18.91",
 	"10.204.18.92",
-	"10.128.15.230",
 	"10.135.34.181",
 	"10.136.170.35",
+	"10.198.140.144",
 	"10.135.36.162",
 	"10.135.36.163",
 	"10.135.38.85",
@@ -47,13 +46,11 @@ var PushSvcSet2 []string = []string{
 }
 
 var PushSvcSet3 []string = []string{
-	"10.128.15.218",
-	"10.128.36.181",
 	"10.128.70.179",
-	"172.27.31.24",
 	"10.204.18.94",
-	"10.130.139.16",
+	"10.198.140.224",
 	"10.135.34.93",
+	"10.198.140.226",
 	"10.136.166.152",
 	"10.136.166.153",
 	"10.136.166.154",
@@ -67,21 +64,17 @@ var PushSvcSet4 []string = []string{
 	"10.153.156.145",
 	"10.153.156.152",
 	"10.153.156.249",
-	"10.130.9.46",
-	"10.130.9.54",
 	"10.135.34.180",
 	"10.177.147.83",
-	"10.130.139.15",
 	"10.187.137.30",
+	"10.198.140.223",
 	"10.135.36.166",
 }
 
 var PushSvcSet5 []string = []string{
-	"10.130.139.12",
-	"10.130.139.14",
-	"10.134.11.99",
 	"10.135.34.179",
 	"10.177.147.82",
+	"10.198.140.222",
 	"10.204.17.239",
 	"10.198.131.175",
 	"10.198.131.176",
@@ -105,25 +98,23 @@ var PushSvcSet6 []string = []string{
 }
 
 var PushSvcSet7 []string = []string{
-	"10.130.67.98",
-	"10.128.15.210",
-	"10.130.9.45",
-	"10.130.9.62",
 	"10.187.151.155",
 	"10.187.151.156",
 	"10.187.151.209",
 	"10.187.151.210",
 	"10.187.151.219",
 	"10.128.69.17",
+	"10.198.140.140",
+	"10.198.140.141",
+	"10.198.140.142",
+	"10.198.140.143",
 }
 
 var PushSvcSet8 []string = []string{
 	"10.204.18.93",
-	"10.130.67.154",
-	"10.130.10.230",
-	"10.130.9.79",
-	"10.134.11.95",
-	"172.27.34.249",
+	"10.198.140.217",
+	"10.198.140.218",
+	"10.198.140.221",
 	"10.128.70.178",
 	"10.135.32.100",
 	"10.135.32.53",
@@ -134,8 +125,8 @@ var PushSvcSet8 []string = []string{
 
 var PushSvcSet9 []string = []string{
 	"10.198.132.205",
-	"10.130.9.44",
 	"10.177.147.81",
+	"10.198.140.227",
 	"10.135.35.76",
 	"10.135.35.77",
 	"10.135.35.78",
@@ -188,44 +179,6 @@ func GetUserCurrentStatus(user string) (status string, ip string, err error) {
 			continue
 		}
 		return status, v, nil
-		/*
-			shell, err := NewRemote("mqq@"+v, "mqq2005")
-			if err != nil {
-				return "", "", "", err
-			}
-
-			status, err := shell.ExecTelnet("telnet "+v+" 44953", "show "+user)
-			if err != nil {
-				return "", "", "", err
-			}
-
-			log.Println(status)
-
-			if strings.Contains(status, "can't find user") {
-				log.Println("skip")
-				continue
-			}
-			log.Println("after")
-
-			command := fmt.Sprintf("grep -a %s /usr/local/app/taf/app_log/QQService/PushSvc%d/QQService.PushSvc%d_SendMsg_%s.log",
-				user, set_id, set_id, access_time)
-			log.Println(command)
-			content, err := shell.RunCommand(command)
-			if err == nil {
-				return "", "", "", err
-			}
-
-			if strings.Contains(content, "No such file or directory") {
-				command := fmt.Sprintf("zgrep %s /usr/local/app/taf/app_log/QQService/PushSvc%d/QQService.PushSvc%d_SendMsg_%s.log.gz",
-					user, set_id, set_id, access_time)
-				log.Println(command)
-				content, err = shell.RunCommand(command)
-				if err == nil {
-					return "", "", "", err
-				}
-			}
-
-			return status, v, content, err*/
 	}
 	return "", "", errors.New("can't find user")
 }
