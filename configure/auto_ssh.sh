@@ -36,8 +36,8 @@ then
 	read name host user pass <<< $(awk -v key="$host_name" '{if ($1==key)print $1,$2,$3,$4};' $config);
 	if [ "$name" == "" ];
 	then
-		echo "$host not found";
-		return
+		echo "\"$host_name\" not found";
+		exit 1;
 	fi
 	cmd=$(awk -v key="$host_name" '{if ($1==key){for (i=5;i<=NF;i++)printf($i" ")}};' $config);
 
@@ -53,7 +53,7 @@ fi
 
 if [ "$target" == "scp" ];
 then
-	return
+	exit 0;
 fi
 
 
