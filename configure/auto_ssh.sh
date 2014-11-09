@@ -11,6 +11,16 @@
 # 	auto servername
 #
 
+# usage auto_rsync configure
+# configure file:
+# rsync_name	pass	/usr/local/	username@host:/usr/local/backup
+# add to system:
+# ~/.bashrc
+# 	. auto_ssh.sh init_rsync configure
+# usage:
+# autorync rsync_name
+
+
 script_name=auto_ssh.sh
 
 [ $# -le 1 ] && { echo "Usage: $script_name command configure"; return;}
@@ -28,6 +38,14 @@ then
 	return;
 fi
 
+if [ "$target" == "init_rsync" ];
+then
+	alias autorync="$script_name rsync $2";
+
+	name_list=`awk '{printf("%s ", $1)}' $config`;
+	complete -W "$name_list" autorync;
+	return;
+fi
 
 if [ "$target" == "login" ];
 then
@@ -50,6 +68,22 @@ then
 	tmux renamew localhost
 fi
 
+if [ "$target" == "rsync" ];
+then
+	rsync_name=$3
+
+	read name pass src dst <<< $(awk -v key="$rsync_name" '{if ($1==key)print $1,$2,$3,$4};' $config);
+	if [ "$name" == "" ];
+	then
+		echo "\"$rsync_name\" not found";
+		exit 1;
+	fi
+
+	echo rsync: "$src -> $dst"
+
+	expect_rsync.sh $pass $src $dst
+	echo finish: $name
+fi
 
 if [ "$target" == "scp" ];
 then
