@@ -1,0 +1,155 @@
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>提醒服务</title>
+<link rel="stylesheet" href="/page/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+	<form action="/sender" method="POST" class="form-horizontal">
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">业务类型:</label>
+		<div class="col-sm-2">
+			<select name="busi_type" class="form-control">
+				<option value="0">QQ</option>
+				<option value="1">京东</option>
+				<option value="2">群活动</option>
+				<option value="3">外网京东</option>
+				<option value="4">语音提醒</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Header Uin:</label>
+		
+		<div class="col-sm-10">
+			<input name="head_uin" type="text" ></input>
+		</div>
+	</div>
+	
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">seq:</label>
+		<div class="col-sm-10">
+			<input name="seq" type="text"></input>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">到期时间:</label>
+		<div class="col-sm-10">
+			<input name="at_time" type="text"></input>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">内容:</label>
+		<div class="col-sm-6">
+			<textarea name="content" type="text" rows="3" class="form-control"></textarea>
+		</div>
+	</div>
+	
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">跳转URL:</label>
+		<div class="col-sm-10">
+			<input name="redirect_url" type="text"></input>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">提醒昵称:</label>
+		<div class="col-sm-10">
+			<input name="reminder_nick" type="text"></input>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">From Uin:</label>
+		<div class="col-sm-10">
+			<input name="from_uin" type="text"></input>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">To Type:</label>
+		<div class="col-sm-4">
+			<select name="to_type" class="form-control">
+				<option value="C2C">C2C</option>
+				<option value="GROUP">GROUP</option>
+				<option value="DISCUSS">DISCUSS</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">To Uin:</label>
+		<div class="col-sm-10">
+			<input name="to_uin" type="text"></input>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">关联SEQ:</label>
+		
+		<div class="col-sm-10">
+			<input name="association_seq" type="text" ></input>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">操作:</label>
+		<div class="col-sm-4">
+			<select name="op_type" class="form-control">
+				<option value="1">OP_ADD</option>
+				<option value="2">OP_REMOVE</option>
+				<option value="3">OP_UPDATE</option>
+				<option value="4">OP_GET</option>
+				<option value="5">OP_DISABLE</option>
+				<option value="6">OP_ENABLE</option>
+				<option value="7">OP_CHECK_ENABLE</option>
+				<option value="8">OP_PUSH_MESSAGE_TO_USER</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">服务器:</label>
+		<div class="col-sm-3">
+			<select name="server_type" class="form-control">
+				<option value="1">测试机</option>
+				<option value="2">线上214</option>
+				<option value="3">线上187</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">登录态:</label>
+		<div class="col-sm-2">
+			<select name="login_type" class="form-control">
+				<option value="0">无</option>
+				<option value="1">sid</option>
+				<option value="2">skey</option>
+			</select>
+		</div>
+		<div class="col-sm-2">
+			<input name="login_string" type="text"></input>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-default">提交</button>
+		</div>
+	</div>
+	</form>
+
+</div>
+</body>
+</html>
