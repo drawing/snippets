@@ -3,6 +3,7 @@ package main
 import (
 	"./sender"
 	"code.google.com/p/goprotobuf/proto"
+	"encoding/hex"
 	"html/template"
 	"log"
 	"net/http"
@@ -43,6 +44,20 @@ func GetFormUint32(r *http.Request, key string) *uint32 {
 	}
 	return proto.Uint32(uint32(iValue))
 }
+
+func GetFormUint32WithNil(r *http.Request, key string) *uint32 {
+	var iValue uint64
+	var err error
+	iValue, err = strconv.ParseUint(r.FormValue(key), 10, 32)
+	if err != nil {
+		iValue = 0
+	}
+	if iValue == 0 {
+		return nil
+	}
+	return proto.Uint32(uint32(iValue))
+}
+
 func GetFormString(r *http.Request, key string) *string {
 	value := r.FormValue(key)
 	return proto.String(value)
@@ -72,6 +87,8 @@ func ConstructPackage(op_type uint64,
 		head.Password = proto.String("JD_312a2a23975959c712f28471a8b465d13")
 	case 4:
 		head.Password = proto.String("Call_142821b4b1f3077de76d766682519ef4")
+	case 5:
+		head.Password = proto.String("BIRTH_06b904887f6437d0c8b9fc37971f4014")
 	}
 
 	request := &tencent_im_reminder.Request{}
@@ -155,11 +172,23 @@ func SenderHandler(w http.ResponseWriter, r *http.Request) {
 	head.BussiType = GetFormUint32(r, "busi_type")
 
 	head.AuthMethod = GetFormUint32(r, "login_type")
-	if *head.AuthMethod == 1 {
+	switch *head.AuthMethod {
+	case 1:
 		head.Sid = GetFormString(r, "login_string")
-	} else if *head.AuthMethod == 2 {
+	case 2:
 		head.Skey = GetFormString(r, "login_string")
+	case 3:
+		svalue := r.FormValue("login_string")
+		bvalue, err := hex.DecodeString(svalue)
+		if err != nil {
+			log.Println("hex.Decode", err)
+		} else {
+			head.AuthA2 = proto.String(string(bvalue))
+		}
 	}
+	head.ClientIp = GetFormStringWithNil(r, "client_ip")
+	head.ClientPort = GetFormUint32WithNil(r, "client_port")
+	head.ClientAppid = GetFormUint32WithNil(r, "client_appid")
 
 	resp := &tencent_im_reminder.ReminderPackage{}
 	var cost int64 = 0

@@ -3,7 +3,8 @@
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>提醒服务</title>
-<link rel="stylesheet" href="/page/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+<!-- link rel="stylesheet" href="/page/bootstrap.min.css" -->
 </head>
 
 <body>
@@ -21,6 +22,7 @@
 				<option value="2">群活动</option>
 				<option value="3">外网京东</option>
 				<option value="4">语音提醒</option>
+				<option value="5">生日提醒</option>
 			</select>
 		</div>
 	</div>
@@ -136,12 +138,29 @@
 				<option value="0">无</option>
 				<option value="1">sid</option>
 				<option value="2">skey</option>
+				<option value="3">a2</option>
 			</select>
 		</div>
 		<div class="col-sm-2">
 			<input name="login_string" type="text"></input>
 		</div>
 	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">用户终端信息:</label>
+		<div class="col-sm-2">
+			<label class="control-label">用户ip:</label><br>
+			<input name="client_ip" type="text"></input>
+		</div>
+		<div class="col-sm-2">
+			<label class="control-label">用户port:</label><br>
+			<input name="client_port" type="text"></input>
+		</div>
+		<div class="col-sm-2">
+			<label class="control-label">用户appid:</label><br>
+			<input name="client_appid" type="text"></input>
+		</div>
+	</div>
+	<hr>
 	
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
