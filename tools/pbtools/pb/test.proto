@@ -1,0 +1,8 @@
+
+package test;
+
+message Test
+{
+	optional uint64 name = 1;
+}
+
